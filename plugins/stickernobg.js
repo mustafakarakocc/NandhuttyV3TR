@@ -23,7 +23,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       })
     } else if (/image/.test(mime)) {
       let img = await q.download()
-      if (!img) throw `Reply sticker with command *${usedPrefix + command}*`
+      if (!img) throw `Stickerı komutla yanıtlayın! *${usedPrefix + command}*`
       let imgbase64 = img.toString('base64')
       let data = await axios.post('https://salisganteng.pythonanywhere.com/api/remove-bg', {
         'api-key': 'salisheker',
@@ -36,7 +36,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       })
     } else if (args[0]) {
       if (isUrl(args[0])) stiker = await sticker5(false, args[0], packname, author)
-      else throw 'Invalid URL!'
+      else throw 'Geçersiz URL!'
     }
   } catch (e) {
     throw e
