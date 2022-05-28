@@ -7,13 +7,13 @@ let handler = async (m, { text, usedPrefix, command }) => {
     switch (v.type) {
       case 'video': return `
 *${v.title}* (${v.url})
-Duration: ${v.timestamp}
-Uploaded ${v.ago}
-${v.views} Viewer
+Süre: ${v.timestamp}
+Yüklenme tarihi ${v.ago}
+${v.views} İzlenme sayısı
       `.trim()
       case 'kanal': return `
 *${v.name}* (${v.url})
-_${v.subCountLabel} (${v.subCount}) Subscriber_
+_${v.subCountLabel} (${v.subCount}) Abone_
 ${v.videoCount} video
 `.trim()
     }
