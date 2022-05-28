@@ -53,7 +53,7 @@ if (!opts['test']) setInterval(async () => {
 if (opts['server']) require('./server')(global.conn, PORT)
 
 conn.version = [3, 3234, 9]
-conn.browserDescription = [" Laçin Eke YouTube ABONE OL! ", "safari", "3.0.0"];
+conn.browserDescription = [" Laçin-Eke-YouTube ", "safari", "3.0.0"];
 conn.connectOptions.maxQueryResponseTime = 60_000
 if (opts['test']) {
   conn.user = {
@@ -130,8 +130,8 @@ global.reloadHandler = function () {
   }
   conn.welcome = 'Selam, @user!\nGruba hoşgeldin! @subject\n\n@desc'
   conn.bye = '@user GoodBye'
-  conn.spromote = '@user now admin'
-  conn.sdemote = '@user not admin now'
+  conn.spromote = '@user Artık yönetici!'
+  conn.sdemote = '@user Artık yönetici değil!'
   conn.handler = handler.handler
   conn.onDelete = handler.delete
   conn.onParticipantsUpdate = handler.participantsUpdate
