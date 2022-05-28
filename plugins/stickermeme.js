@@ -5,8 +5,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let [atas, bawah] = text.split`|`
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || ''
-    if (!mime) throw `Balas gambar dengan perintah *${usedPrefix + command} <${atas ? atas : 'top text'}>|<${bawah ? bawah : 'bottom text'}>*`
-    if (!/image\/(jpe?g|png)/.test(mime)) throw `Media tidak didukung!`
+    if (!mime) throw `Resmi komutla yanıtlayın! *${usedPrefix + command} <${atas ? atas : 'top text'}>|<${bawah ? bawah : 'bottom text'}>*`
+    if (!/image\/(jpe?g|png)/.test(mime)) throw `Medya desteklenmiyor!`
     let img = await q.download()
     let url = await uploadImage(img)
     meme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas ? atas : '_')}/${encodeURIComponent(bawah ? bawah : '_')}.png?background=${url}`
