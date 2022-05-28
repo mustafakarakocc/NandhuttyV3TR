@@ -1,7 +1,7 @@
 let yts = require('yt-search')
 
 let handler = async (m, { text, usedPrefix, command }) => {
-  if (!text) throw `Use:\n${usedPrefix + command} <text>\n\nÖrnek:\n${usedPrefix + command}Laçin Eke`
+  if (!text) throw `Use:\n${usedPrefix + command} <text>\n\nÖrnek:\n${usedPrefix + command}Laçin Eke YouTube`
   let results = await yts(text)
   let teks = results.all.map(v => {
     switch (v.type) {
