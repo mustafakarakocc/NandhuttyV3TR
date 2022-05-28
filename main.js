@@ -53,7 +53,7 @@ if (!opts['test']) setInterval(async () => {
 if (opts['server']) require('./server')(global.conn, PORT)
 
 conn.version = [3, 3234, 9]
-conn.browserDescription = [" Laçin-Eke-YouTube ", "safari", "3.0.0"];
+conn.browserDescription = [" Lachin-Eke-YouTube ", "safari", "3.0.0"];
 conn.connectOptions.maxQueryResponseTime = 60_000
 if (opts['test']) {
   conn.user = {
