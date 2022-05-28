@@ -2,7 +2,7 @@ const fs = require('fs')
 const ffmpeg = require('fluent-ffmpeg')
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-    gagal = `Reply to media with commands *${usedPrefix + command}*`
+    gagal = `Medyaya komutlarla yanıt verin! *${usedPrefix + command}*`
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || ''
     if (/image/.test(mime)) {
@@ -12,15 +12,15 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         await ffmpeg(`./${media}`)
             .input(media)
             .on('start', function (cmd) {
-                console.log(`Started : ${cmd}`)
+                console.log(`Başladı : ${cmd}`)
             })
             .on('error', function (e) {
                 console.log(`Error : ${e}`)
                 fs.unlinkSync(media)
-                m.reply('Error!')
+                m.reply('Hata!')
             })
             .on('end', function () {
-                console.log('Finish')
+                console.log('Bitti!')
                 buff = fs.readFileSync(ran)
                 conn.sendMessage(m.chat, buff, 'stickerMessage', { quoted: m })
                 fs.unlinkSync(media)
@@ -37,16 +37,16 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         await ffmpeg(`./${media}`)
             .inputFormat(media.split('.')[1])
             .on('start', function (cmd) {
-                console.log(`Started : ${cmd}`)
+                console.log(`Başladı : ${cmd}`)
             })
             .on('error', function (e) {
-                console.log(`Error : ${e}`)
+                console.log(`Hata : ${e}`)
                 fs.unlinkSync(media)
                 tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-                m.reply(`_*Failed, while converting ${tipe} to sticker*_`)
+                m.reply(`_*Hata! Dönüştürülürken başarısız oldu ${tipe} sticker için*_`)
             })
             .on('end', function () {
-                console.log('Finish')
+                console.log('Bitti')
                 buff = fs.readFileSync(ran)
                 conn.sendMessage(m.chat, buff, 'stickerMessage', { quoted: m })
                 fs.unlinkSync(media)
